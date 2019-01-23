@@ -5,6 +5,11 @@
         <file>settings.png</file>
         <file>site.png</file>
         <file>back.png</file>
+        <file>add.png</file>
+        <file>edit.png</file>
+        <file>delete.png</file>
+        <file>more.png</file>
+        <file>total.png</file>
     </qresource>
     <qresource prefix="/icon">
         <file>icon.png</file>

@@ -15,6 +15,8 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         width: 50
+        b_add: true
+        b_delete: true
 
         onAddElement: {
             console.log("add")
