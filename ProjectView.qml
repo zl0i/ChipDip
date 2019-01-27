@@ -31,7 +31,8 @@ Item {
     }
     Component {
         id: _tablecomponent
-        ProjectList {
+        ElementList {
+            state: "project"
             anchors.fill: parent
             onBack: {
                 _loader.sourceComponent = _elementcomponent

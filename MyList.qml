@@ -4,6 +4,7 @@ import QtQuick.Controls 2.4
 SwipeView {
     anchors.fill: parent
     signal openTable(var table)
+    property bool select: false
     property alias model: _elementview.model
     ListView {
         id: _elementview
@@ -35,15 +36,24 @@ SwipeView {
                 }
 
             }
-            Text {
-                id: _text
+            Row {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
-                color: "black"
-                text: modelData
-                font.pixelSize: 18
+                spacing: 10
+                CheckBox {
+                    visible: select
+                }
+
+                Text {
+                    id: _text
+                    color: "black"
+                    text: modelData
+                    font.pixelSize: 18
+                }
             }
+
+
         }
     }
 }

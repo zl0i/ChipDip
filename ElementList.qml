@@ -2,8 +2,19 @@ import QtQuick 2.11
 import QtQuick.Controls 2.4
 
 Item {
-    anchors.fill: parent
+    id: _elementlist
+    anchors.fill: parent   
     signal back()
+    states: [
+        State {
+            name: "element"
+
+        },
+        State {
+            name: "project"
+
+        }
+    ]
     Button {
         id: _button
         anchors.left: parent.left
@@ -32,13 +43,17 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         model: _workdb.TableModel
+
         delegate: Rectangle {
-            property bool isOpen: false
-            property alias anim: _anim
             id: _rect
+            property bool isOpen: false
+            property alias anim: _anim           
             width: parent.width
+
             height: 50
             clip: true
+            state: "element"
+
             NumberAnimation on height {
                 id: _anim
                 from: 50
@@ -105,16 +120,43 @@ Item {
                 anchors.left: _clBasictxt.left
                 anchors.right: _clBasictxt.right
                 height: 50
-                Column {
-                    Text {
-
-                        text: "Местонахождение: " + location
+                Loader {
+                    id: _loader
+                    sourceComponent: {
+                        if(_elementlist.state === "element") {
+                            return _elementText
+                        }
+                        else {
+                            return _projectText
+                        }
                     }
-                    Text {
-                        text: "URL: " + url
+                }
+                Component {
+                    id: _elementText
+                    Column {
+                        Text {
+                            text: "Местонахождение: " + location
+                        }
+                        Text {
+                            text: "URL: " + url
+                        }
+                        Text {
+                            text: "Описание: " + description
+                        }
                     }
-                    Text {
-                        text: "Описание: " + description
+                }
+                Component {
+                    id: _projectText
+                    Column {
+                        Text {
+                            text: "URL: " + url
+                        }
+                        Text {
+                            text: "Всего: " + total
+                        }
+                        Text {
+                            text: "Наличие: " + availability
+                        }
                     }
                 }
             }

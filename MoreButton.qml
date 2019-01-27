@@ -17,7 +17,7 @@ Item {
     property bool b_total: false
 
     FuncButton {
-        color: "green"
+        color: "red"
         id: _mainbut
         anchors.bottom: parent.bottom
         anchors.right: parent.right
@@ -26,6 +26,7 @@ Item {
         source: "qrc:/image/more.png"
         onClicked: {
             startAnimationImage()
+
             if(!isOpen) {
                 var cnt = 1
 
@@ -48,10 +49,7 @@ Item {
                 isOpen = true
             }
             else {
-                for(var i = 0; i < butArr.length; i++) {
-                    butArr[i].close()
-                }
-                isOpen = false
+                closeAll()
             }
         }
 
@@ -71,16 +69,16 @@ Item {
            onClicked: {
                switch(state) {
                    case "add":
-                       addElement()
+                       addElement()                       
                        break;
                    case "edit":
-                       editElement()
+                       editElement()                        
                        break;
                    case "delete":
-                       deleteElement()
+                       deleteElement()                       
                        break;
                    case "total":
-                       calcTotal()
+                       calcTotal()                      
                        break;
                }
            }
@@ -137,7 +135,7 @@ Item {
                running: false
                easing.type: Easing.InOutQuad
                onStopped:  {
-                    _button.destroy()
+                     butArr[num-1].destroy()
                }
            }
            function close () {
@@ -145,6 +143,15 @@ Item {
            }
         }
     }
+
+    function closeAll() {
+
+        for(var i = 0; i < butArr.length; i++) {
+            butArr[i].close()
+        }
+        isOpen = false
+    }
+
 
 
 

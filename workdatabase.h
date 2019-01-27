@@ -68,9 +68,9 @@ public:
     WebElement* getWebElement();
     void setWebElement(WebElement *p);
 
-    /*Q_INVOKABLE*/ void createTable(QString str);
-    /*Q_INVOKABLE*/ void createProject(QString str);
-    /*Q_INVOKABLE*/ void deleteTableOrProject(QModelIndex index);
+    Q_INVOKABLE void createTable(QString str);
+    Q_INVOKABLE void createProject(QString str);
+    Q_INVOKABLE void deleteTableOrProject(QModelIndex index);
     Q_INVOKABLE void updateTableModel(QString name);
     //Q_INVOKABLE void updateListRoles(QModelIndex index);
 

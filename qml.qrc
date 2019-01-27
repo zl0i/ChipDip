@@ -5,8 +5,8 @@
         <file>MoreButton.qml</file>
         <file>MyList.qml</file>
         <file>ElementList.qml</file>
-        <file>ProjectList.qml</file>
         <file>ProjectView.qml</file>
         <file>FuncButton.qml</file>
+        <file>AddTable.qml</file>
     </qresource>
 </RCC>
